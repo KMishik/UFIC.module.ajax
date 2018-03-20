@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function uficajax_theme($existing, $type, $theme, $path)
+{
+	$uficajaxThemeArray = [
+		'phone_contacts_template' => array(
+			'variables' => [
+				'name' => NULL,
+			],
+		),
+	];
+
+	return $uficajaxThemeArray;
+}
+
+/**
+ * @param $variables
+ */
+function template_preprocess_phone_contacts_template(&$variables) {
+	$date_formatter = \Drupal::service('date.formatter');
+	$variables['date'] = $date_formatter->format(time());
+	$variables['attributes']['class'] = 'contacts-layout';
+}
+
+/**
+ * @param $variables
+ */
+/*function uficajax_preprocess_page(&$variables) {
+
+	$logged_user = \Drupal::currentUser()->isAuthenticated();
+
+	if(!$logged_user) {
+		$libraries['#attached']['library'][] = 'core/drupal.dialog.ajax';
+		render($libraries);
+	}
+}*/

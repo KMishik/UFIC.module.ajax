@@ -1,0 +1,15 @@
+uficajax.ajax_contact_division:
+  path: '/contacts/ajax/{name}'
+  defaults:
+    _controller: '\Drupal\uficajax\Controller\UficContactsAjax::divContactAjax'
+    _title: 'Контакты'
+  requirements:
+    _permission: 'access content'
+
+uficajax.nojs_contact_division:
+  path: '/contacts/nojs/{name}'
+  defaults:
+    _controller: '\Drupal\uficajax\Controller\UficContactsAjax::divContactNojs'
+    _title: 'Контакты'
+  requirements:
+    _permission: 'access content'

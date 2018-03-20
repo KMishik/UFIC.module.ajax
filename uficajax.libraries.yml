@@ -1,0 +1,9 @@
+uficmodal:
+  version: 1.0.0
+  css:
+    theme:
+      assets/css/uficmodal.css: {}
+  js:
+    assets/js/uficmodal.js: {}
+  dependencies:
+    - core/jquery

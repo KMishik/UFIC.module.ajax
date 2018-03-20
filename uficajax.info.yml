@@ -1,0 +1,6 @@
+name: 'Ufic Ajax Engine'
+description: 'Реализация механизма AJAX сайта UFIC'
+core: 8.x
+type: module
+package: 'UFIC'
+version: '8.x-0.1'
