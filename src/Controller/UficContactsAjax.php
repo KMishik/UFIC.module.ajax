@@ -51,7 +51,7 @@ class UficContactsAjax extends ControllerBase
 									break;
 			case 'ibg': $title = $this->t("ФГБУН Институт биохимии и генетики УНЦ РАН");
 									break;
-			case 'botgarden': $title = $this->t("ФГБУН Батанический сад-институт УНЦ РАН");
+			case 'botgarden': $title = $this->t("ФГБУН Ботанический сад-институт УНЦ РАН");
 									break;
 			case 'igeo': $title = $this->t("ФГБУН Институт геологии УНЦ РАН");
 									break;
