@@ -3,5 +3,3 @@
 # Ignore special npm dirs and files
 /node_modules/
 package-lock.json
-# Ignore compiled css and html files
-/assets/**/*.css
