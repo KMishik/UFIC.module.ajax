@@ -13,3 +13,12 @@ uficajax.nojs_contact_division:
     _title: 'Контакты'
   requirements:
     _permission: 'access content'
+
+uficajax.citation:
+  path: '/get-citation'
+  defaults:
+    _controller: '\Drupal\uficajax\Controller\UficAjaxCitations::getRandomCitation'
+    _title: 'Произвольная цитата'
+  requirements:
+    _permission: 'access content'
+

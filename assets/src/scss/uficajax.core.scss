@@ -1,0 +1,73 @@
+@import 'uficajax_var_mix';
+
+div[id^="citation"] {
+  height: 100%;
+  width: $citations_width;
+  overflow: hidden;
+  header {
+    img {
+      margin: 0px 10px;
+    }
+    p {
+      font-size: 12px;
+      opacity: 0.8;
+      font-weight: bold;
+      font-style: italic;
+      margin: 0px 10px;
+      & > span {
+        display: block;
+        margin-top: 10px;
+      }
+    }
+  }
+  .cite {
+    &::before {
+      content: "";
+      display: block;
+      clear: both;
+      height: $cite_arrow_height;
+      position: relative;
+    }
+    & p {
+      margin: 0 10px;
+      padding: 5px;
+      font-size: 80%;
+      background-color: green;
+      color: white;
+      &::before, &::after {
+        content: '"';
+        display: inline;
+      }
+    }
+  }
+}
+
+div[id*="citation-ufic"] {
+  header {
+    & > img {
+      float: left;
+    }
+  }
+  .cite {
+    &::before {
+      left: 110px;
+      border-top: $cite_arrow_height solid #f3f3f3;
+      border-left: $cite_arrow_width solid green;
+    }
+  }
+}
+
+div[id*="citation-rb"] {
+  header {
+    & > img {
+      float: right;
+    }
+  }
+  .cite {
+    &::before {
+      right: 110px;
+      border-top: $cite_arrow_height solid #f3f3f3;
+      border-right: $cite_arrow_width solid green;
+    }
+  }
+}

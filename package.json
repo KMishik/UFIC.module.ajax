@@ -9,8 +9,11 @@
   "author": "K.Mishik",
   "license": "ISC",
   "devDependencies": {
+    "@types/jquery": "^3.3.1",
     "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0"
+    "gulp-sass": "^3.1.0",
+    "gulp-typescript": "^4.0.2",
+    "typescript": "^2.8.1"
   }
 }

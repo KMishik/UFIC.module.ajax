@@ -1,9 +1,10 @@
-uficmodal:
+uficajax.core:
   version: 1.0.0
   css:
     theme:
-      assets/css/uficmodal.css: {}
+      assets/css/uficajax.core.css: {}
+  header: true
   js:
-    assets/js/uficmodal.js: {}
+    assets/js/uficajax.core.js: {}
   dependencies:
-    - core/jquery
+     - core/jquery.once
