@@ -9,35 +9,55 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class UficAjaxCitations extends ControllerBase
 {
+
 	public function getRandomCitation() {
 
-		$nodeList = [125,126];
+		$citeAuthor = array(
+			'rb' => 14,
+			'ufic' => 15,
+		);
+
+		//$allEntities = \Drupal::entityTypeManager()->getDefinitions();
+		$entityQuery = \Drupal::entityQuery('node')->condition('type', 'ufic_citations');
+
+		$extCond = $entityQuery->andConditionGroup()
+			->condition('status',1);
+
+		$nodeList = $entityQuery->condition($extCond)->execute();
+
 		$output = array();
 
-		foreach ($nodeList as $nodeID) {
-			$node = Node::load($nodeID);
+		if (!empty($nodeList)) {
+			foreach ($nodeList as $nodeID) {
+				$node = Node::load($nodeID);
 
-			$cite = $node->field_ufic_citations;
-			$citeValue = $cite->getValue();
+				$authorTerm = $node->field_ufic_author_term->getValue()[0]['target_id'];
+				$authorID = array_search($authorTerm, $citeAuthor);
+				if (!$authorID) {
+					$authorID = 'none';
+				}
+				$citeValue = $node->field_ufic_citations->getValue();
 
-			$valueCount = count($citeValue);
+				$valueCount = count($citeValue);
 
-			$randCitationDelta = random_int(0, (int)$valueCount - 1);
-			$randCitation = $citeValue[$randCitationDelta]['value'];
-			$randCitation = strip_tags($randCitation);
+				$randCitationDelta = random_int(0, (int)$valueCount - 1);
+				$randCitation = $citeValue[$randCitationDelta]['value'];
+				$randCitation = strip_tags($randCitation);
 
-			$strMax = 140;
-			$strEdge = mb_strpos($randCitation, " ", (int)$strMax);
+				$strMax = 140;
+				$strEdge = mb_strpos($randCitation, " ", (int)$strMax);
 
-			$randCitation = mb_substr($randCitation, 0, $strEdge);
+				$randCitation = mb_substr($randCitation, 0, $strEdge);
 
-			$randCitation = '<p>' . $randCitation . '...' . '</p>';
+				$randCitation = '<p>' . $randCitation . '...' . '</p>';
 
-			$output[$nodeID] = array(
+				$output[$authorID] = array(
+					'nodeID'=> $nodeID,
 					'delta' => $randCitationDelta,
 					'cite' => $randCitation,
-			);
+				);
 
+			}
 		}
 
 		$response = new JsonResponse($output);

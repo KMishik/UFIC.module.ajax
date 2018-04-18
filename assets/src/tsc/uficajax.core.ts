@@ -1,14 +1,14 @@
-'use strict';
 ! function() {
+	"use strict";
 	let AJAXrequest: XMLHttpRequest = new XMLHttpRequest();
 	let response: Object;
-	let nodeID: string;
+	let authorID: string;
 	AJAXrequest.open('GET', '/get-citation', false);
 	AJAXrequest.send();
 	response = JSON.parse(AJAXrequest.responseText);
-	for (nodeID in response) {
-		let value: string = JSON.stringify(response[nodeID]);
-		window.sessionStorage.setItem(nodeID, value);
+	for (authorID in response) {
+		let value: string = JSON.stringify(response[authorID]);
+		window.sessionStorage.setItem(authorID, value);
 	}
 }();
 
